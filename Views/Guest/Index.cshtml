@@ -7,27 +7,35 @@
 <section class="container-fluid mx-0 px-0 text-white">
     <div class="herobanner p-5 text-center">
         <img class="d-block mx-auto mb-4" src="img/logo.png" alt="" width="72">
-            <h1 class="display-5 fw-bold">Benvenuto!</h1>
-            <div class="col-lg-6 mx-auto">
-                <p class="lead mb-4">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-                    Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                </p>
-              @*<div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+        <h1 class="display-5 fw-bold">Benvenuto!</h1>
+        <div class="col-lg-6 mx-auto">
+            <p class="lead mb-4">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </p>
+            @*<div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
                 <button type="button" class="btn btn-primary btn-lg px-4 gap-3">Primary button</button>
                 <button type="button" class="btn btn-outline-secondary btn-lg px-4">Secondary</button>
               </div>*@
-            </div>
+        </div>
     </div>
 </section>
+
+<section id="loading" class="d-flex justify-content-center">
+     <div>
+         <div class="lds-dual-ring"></div>
+         <p>Caricamento in corso ...</p>
+     </div>
+
+ </section>
 
 <section class="container">
     <div class="p-4 text-dark text-center">
         <h3 class="text-uppercase">Le Nostre Pizze</h3>
         
-            <div id="pizza-list" class="mt-3 row justify-content-center">
+            <div id="pizze-list" class="mt-3 row justify-content-center">
 
                 <!-- chiamata Axios per ottenere lista pizze-->
                 
@@ -43,15 +51,15 @@
             console.log(res.data);
             if(res.data.length > 0){
                 res.data.forEach(pizza =>{
-                document.querySelector("#pizza-list").innerHTML += 
+                document.querySelector("#pizze-list").innerHTML += 
                     `
                     <div class="col-lg-3 d-flex flex-column justify-content-between">
                         <div class="top_card pb-1">
-                           <img class="bd-placeholder-img rounded-circle" width="150" height="150" src="${pizza.ImgUrl}" alt="${pizza.Name}">
-                           <h4 class="text-uppercase pizza_name fw-normal pt-2">${pizza.Name}</h4>
-                           <span><strong>Categoria:</strong>${pizza.Category?.Name}</span>
-                           <p>${pizza.Description}</p>
-                           h5 class="pizza_name fw-normal">${pizza.Price} €</h5>
+                           <img class="bd-placeholder-img rounded-circle" width="150" height="150" src="${pizza.imgUrl}" alt="${pizza.name}">
+                           <h4 class="text-uppercase pizza_name fw-normal pt-2">${pizza.name}</h4>
+                           <span><strong>Categoria:</strong>${pizza.Category?.name}</span>
+                           <p>${pizza.description}</p>
+                           <h5 class="pizza_name fw-normal">${pizza.price} €</h5>
                         </div>
                         
                         <div class="bottom_card">
@@ -60,13 +68,13 @@
                     </div>
                     `
                 })
-            
+    
                 let isLoading = false;
                 if(!isLoading){
                     document.querySelector("#loading").classList.add("d-none");
                 }
             }else{
-                document.querySelector("#pizza-list").innerHTML += " <tr> <th>Nessuna pizza! Controllare più tardi</th> </tr>"
+                document.querySelector("#pizze-list").innerHTML += ' <h4 class="pt-4 text_alert"> Attualmente non abbiamo prodotti disponibili. <br/> Riprova più tardi!</h4>'
             }
         })
         .catch(err =>{
