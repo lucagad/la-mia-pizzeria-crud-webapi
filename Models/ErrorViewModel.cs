@@ -1,4 +1,4 @@
-﻿namespace la_mia_pizzeria_crud_webapi.Models;
+namespace la_mia_pizzeria_post.Models;
 
 public class ErrorViewModel
 {
@@ -6,4 +6,3 @@ public class ErrorViewModel
 
     public bool ShowRequestId => !string.IsNullOrEmpty(RequestId);
 }
-

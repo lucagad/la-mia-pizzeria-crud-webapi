@@ -1,8 +1,9 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using la_mia_pizzeria_crud_webapi.Models;
+using la_mia_pizzeria_post.Models;
+using Microsoft.EntityFrameworkCore;
 
-namespace la_mia_pizzeria_crud_webapi.Controllers;
+namespace la_mia_pizzeria_post.Controllers;
 
 public class HomeController : Controller
 {
@@ -15,7 +16,14 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
-        return View();
+        List<Pizza> pizzes;
+
+        using (PizzaContext db = new PizzaContext())
+        {
+            pizzes = db.Pizzas.Include("Category").ToList();
+        }
+        
+        return View("Index", pizzes);
     }
 
     public IActionResult Privacy()
@@ -29,4 +37,3 @@ public class HomeController : Controller
         return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
     }
 }
-

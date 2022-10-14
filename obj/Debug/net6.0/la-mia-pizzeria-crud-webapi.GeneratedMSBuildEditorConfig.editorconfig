@@ -15,16 +15,56 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = /Users/lucagaddini/Desktop/Boolean Carrers/001 Corso .NET Experis/002 Progetti C#/la-mia-pizzeria-crud-webapi
 build_property._RazorSourceGeneratorDebug = 
 
+[/Users/lucagaddini/Desktop/Boolean Carrers/001 Corso .NET Experis/002 Progetti C\#/la-mia-pizzeria-crud-webapi/Views/Esercizi/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRXNlcmNpemkvSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [/Users/lucagaddini/Desktop/Boolean Carrers/001 Corso .NET Experis/002 Progetti C\#/la-mia-pizzeria-crud-webapi/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9JbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/lucagaddini/Desktop/Boolean Carrers/001 Corso .NET Experis/002 Progetti C\#/la-mia-pizzeria-crud-webapi/Views/Home/Index_TEST.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9JbmRleF9URVNULmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [/Users/lucagaddini/Desktop/Boolean Carrers/001 Corso .NET Experis/002 Progetti C\#/la-mia-pizzeria-crud-webapi/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9Qcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[/Users/lucagaddini/Desktop/Boolean Carrers/001 Corso .NET Experis/002 Progetti C\#/la-mia-pizzeria-crud-webapi/Views/Pizza/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUGl6emEvQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/lucagaddini/Desktop/Boolean Carrers/001 Corso .NET Experis/002 Progetti C\#/la-mia-pizzeria-crud-webapi/Views/Pizza/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUGl6emEvSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/lucagaddini/Desktop/Boolean Carrers/001 Corso .NET Experis/002 Progetti C\#/la-mia-pizzeria-crud-webapi/Views/Pizza/Show.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUGl6emEvU2hvdy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/lucagaddini/Desktop/Boolean Carrers/001 Corso .NET Experis/002 Progetti C\#/la-mia-pizzeria-crud-webapi/Views/Pizza/Update.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUGl6emEvVXBkYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [/Users/lucagaddini/Desktop/Boolean Carrers/001 Corso .NET Experis/002 Progetti C\#/la-mia-pizzeria-crud-webapi/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL0Vycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/lucagaddini/Desktop/Boolean Carrers/001 Corso .NET Experis/002 Progetti C\#/la-mia-pizzeria-crud-webapi/Views/Shared/Partials/_ErrorAuth.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL1BhcnRpYWxzL19FcnJvckF1dGguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/lucagaddini/Desktop/Boolean Carrers/001 Corso .NET Experis/002 Progetti C\#/la-mia-pizzeria-crud-webapi/Views/Shared/Partials/_Footer.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL1BhcnRpYWxzL19Gb290ZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/lucagaddini/Desktop/Boolean Carrers/001 Corso .NET Experis/002 Progetti C\#/la-mia-pizzeria-crud-webapi/Views/Shared/Partials/_Header.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL1BhcnRpYWxzL19IZWFkZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/lucagaddini/Desktop/Boolean Carrers/001 Corso .NET Experis/002 Progetti C\#/la-mia-pizzeria-crud-webapi/Views/Shared/_LoginPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19Mb2dpblBhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [/Users/lucagaddini/Desktop/Boolean Carrers/001 Corso .NET Experis/002 Progetti C\#/la-mia-pizzeria-crud-webapi/Views/Shared/_ValidationScriptsPartial.cshtml]

@@ -10,6 +10,10 @@
 using System;
 using System.Reflection;
 
+[assembly: Microsoft.AspNetCore.Identity.UI.UIFrameworkAttribute("Bootstrap5")]
+[assembly: AspNetCore.SassCompiler.SassCompilerAttribute("/Users/lucagaddini/.nuget/packages/aspnetcore.sasscompiler/1.55.0/build/../runtim" +
+    "es/osx-arm64/src/dart", "/Users/lucagaddini/.nuget/packages/aspnetcore.sasscompiler/1.55.0/build/../runtim" +
+    "es/osx-arm64/src/sass.snapshot")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("la-mia-pizzeria-crud-webapi")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
