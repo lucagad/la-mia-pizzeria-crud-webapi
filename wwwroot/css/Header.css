@@ -1,0 +1,38 @@
+@import url("https://fonts.googleapis.com/css2?family=Encode+Sans+Condensed:wght@100;200;300;400;500;600;700;800;900&display=swap");
+body {
+  font-family: "Netflix Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background-color: #ffff9a;
+  height: 100vh;
+}
+
+header {
+  height: 130px;
+}
+
+.navbar_personal {
+  background-color: #ff8550;
+  color: #e32929;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.navbar_personal .logo img {
+  height: 80px;
+}
+.navbar_personal .navbar_select_container {
+  flex-grow: 0;
+}
+.navbar_personal .navbar-toggler:focus {
+  text-decoration: none;
+  outline: 0;
+  box-shadow: #17cc1a 0 0 0 0.25rem;
+}
+.navbar_personal a {
+  color: #e32929;
+  text-decoration: none;
+  margin: 0 5px 0 5px;
+}
+.navbar_personal .hamburger_icon {
+  color: #17cc1a;
+}

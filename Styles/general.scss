@@ -1,0 +1,9 @@
+// GENERAL
+@import url('https://fonts.googleapis.com/css2?family=Encode+Sans+Condensed:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import '../Styles/vars';
+
+body{
+  font-family: 'Netflix Sans','Helvetica Neue',Helvetica,Arial,sans-serif;
+  background-color: $background-color-site;
+  height: 100vh;
+}

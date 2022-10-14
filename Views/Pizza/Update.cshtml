@@ -1,0 +1,131 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+@{
+    ViewData["Title"] = "Crea - ";
+}
+@model PizzasCategories;
+
+@* CONTROLLO ACCESSO EFFETTUATO *@
+@if (SignInManager.IsSignedIn(User))
+{
+    <div class="container">
+        <div class="d-flex justify-content-center">
+            <section class="col-md-10 ml-sm-auto col-lg-10 px-md-4">
+                <div class="d-flex justify-content-start flex-wrap align-items-center pt-3 pb-2 mb-3">
+    
+                    @* Singola scheda *@
+                    <div class="card w-100">
+                        <div class="card-header d-flex justify-content-between align-items-center">
+                            <span class="font-weight-bold">Modifica Pizza selezionata</span>
+                            <a class="btn btn_custom_secondary" asp-area="" asp-controller="Pizza" asp-action="Index">Torna all'elenco</a>
+                        </div>
+    
+                        <div class="card-body d-flex flex-column flex-md-row row">
+                            
+                            <form asp-controller="Pizza" asp-action="Update" asp-route-id="@Model.Pizza.PizzaId" method="post">
+                                @Html.AntiForgeryToken()
+                                
+                                @*{{-- Nome prodotto --}}*@
+                                <div class="form-group">
+                                    <label class="font-weight-bold" for="name">Nome del prodotto</label>
+                                    <input type="text"
+                                           class="form-control"
+                                           asp-for="Pizza.Name"
+                                           id="name"
+                                           placeholder="Inserisci il nome del Prodotto">
+                                    <span asp-validation-for="Pizza.Name" class="text-danger"></span>
+                                </div>
+                            
+                                @*{{-- Prezzo prodotto --}}*@
+                                <div class="form-group">
+                                    <label class="font-weight-bold" for="price">Prezzo del prodotto</label>
+                                    <input type="text"
+                                           class="form-control"
+                                           asp-for="Pizza.Price"
+                                           id="price"
+                                           placeholder="Inserisci il Prezzo">
+                                    <span asp-validation-for="Pizza.Price" class="text-danger"></span>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="font-weight-bold" for="description">Categoria</label>
+                                    <select asp-for="Pizza.CategoryId" rows="10" class="d-block w-100">
+    
+                                        @foreach (Category category in Model.Categories)
+                                        {
+                                            @if (Model.Pizza.CategoryId == category.Id)
+                                            {
+                                                <option value="@category.Id" selected>@category.Name</option>
+                                            }
+                                            else
+                                            {
+                                                <option value="@category.Id">@category.Name</option>
+                                            }
+                                        }
+                                    </select>
+    
+                                    <span asp-validation-for="Pizza.CategoryId" class="text-danger"></span>
+                                </div>
+                            
+                                @*{{-- Descrizione prodotto --}}*@
+                                <div class="form-group">
+                                    <label class="font-weight-bold" for="description">Descrizione del prodotto</label>
+                                    <textarea type="text"
+                                                rows="6"
+                                                class="form-control"
+                                                asp-for="Pizza.Description"
+                                                id="description"
+                                                placeholder="Inserisci la descrizione del Prodotto"></textarea>
+                                    <span asp-validation-for="Pizza.Description" class="text-danger"></span>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label class="font-weight-bold">Ingredienti:</label>
+                                    <select asp-for="SelectedIngredients" multiple="multiple" size="10" class="form-select">
+                                        @foreach (Ingredient ingredient in Model.Ingredients)
+                                        {
+                                            @if (Model.Pizza.Ingredients.Contains(ingredient))
+                                            {
+                                                <option value="@ingredient.Id" selected >@ingredient.Name</option>
+                                            }
+                                            else
+                                            {
+                                                <option value="@ingredient.Id">@ingredient.Name</option>
+                                            }
+                                               
+                                        }
+                                    </select>
+                                    <span asp-validation-for="SelectedIngredients" class="text-danger"></span>
+    
+                                    
+                                </div>
+                                                        
+                                @*{{-- Inserimento Immagini --}}*@
+                                <div class="form-group">
+                                    <label class="font-weight-bold" for="item-image">Aggiungi l'immagine del prodotto</label>
+                                    <input type="text" 
+                                           class="form-control" 
+                                           asp-for="Pizza.ImgUrl"
+                                           id="item-image">
+                                    <span asp-validation-for="Pizza.ImgUrl" class="text-danger"></span>
+                                </div>
+                            
+                                @*{{-- Submit --}}*@
+                                <button type="submit" class="btn btn_custom my-2">Modifica</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                @* Singola scheda *@
+            </section>
+        </div>
+    </div>
+
+}
+@* SE NEGATIVO MOSTRO ERRORE *@
+else
+{
+    @Html.Partial("../Shared/Partials/_ErrorAuth")
+}

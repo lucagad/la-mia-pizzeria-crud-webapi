@@ -1,0 +1,40 @@
+@import '../Styles/general';
+@import '../Styles/vars';
+@import '../Styles/mixins';
+
+header {
+    height: 130px;
+}
+
+.navbar_personal{
+    background-color: $secondary-color;
+    color: $title-primary-color;
+    padding: 20px;
+
+    @include flex-sbtw();
+    .logo{
+        img{
+            height: 80px;
+        }
+    }
+
+    .navbar_select_container{
+        flex-grow: 0;
+    }
+
+    .navbar-toggler:focus {
+        text-decoration: none;
+        outline: 0;
+        box-shadow: $logo-primary-color 0 0 0 0.25rem;
+    }
+
+    a {
+        color: $title-primary-color;
+        text-decoration: none;
+        margin: 0 5px 0 5px;
+    }
+
+    .hamburger_icon{
+        color: $logo-primary-color;
+    }
+}
