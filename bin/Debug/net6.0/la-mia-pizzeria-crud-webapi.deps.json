@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "la-mia-pizzeria-crud-webapi/1.0.0": {
+        "runtime": {
+          "la-mia-pizzeria-crud-webapi.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "la-mia-pizzeria-crud-webapi/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
