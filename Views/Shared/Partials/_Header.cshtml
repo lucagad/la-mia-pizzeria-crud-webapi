@@ -34,7 +34,7 @@
                <a id="manage" class="nav-link text-white" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Ciao, @UserManager.GetUserName(User)!</a>
                <a class="nav-link text-white" asp-area="" asp-controller="Pizza" asp-action="Index">Gestisci Pizze</a>
                                    
-               <form id="logoutForm" class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+               <form id="logoutForm" class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Guest", new { area = "" })">
                     <button id="logout" type="submit" class="nav-link btn btn-link text-white">Esci</button>
                 </form>
             </div>

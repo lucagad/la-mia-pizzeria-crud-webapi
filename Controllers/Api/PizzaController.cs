@@ -8,26 +8,66 @@ using Microsoft.EntityFrameworkCore;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
+/*
+[HttpGet]
+public IActionResult Get()
+{
+    List<Pizza> pizzes = db.Pizzas.Include("Category").ToList();
+
+    return Ok(pizzes);
+}
+*/
+
 namespace la_mia_pizzeria_crud_webapi.Controllers.API
 {
-    [Route("Guest/api/[controller]")]
-    //[Route("[Page]/api/[controller]")]
+    //api/Pizza
+    [Route("api/[controller]/[action]")]
     [ApiController]
     public class PizzaController : ControllerBase
     {
-        PizzaContext db;
-
+        PizzaContext _ctx;
         public PizzaController()
         {
-            db = new PizzaContext();
+            _ctx = new PizzaContext();
         }
-
+        
+        //api/Pizza
         [HttpGet]
-        public IActionResult Get()
+        public IActionResult GetAll()
         {
-            List<Pizza> pizzes = db.Pizzas.Include("Category").ToList();
+            List<Pizza> pizzes = _ctx.Pizzas.Include("Category").ToList();
 
             return Ok(pizzes);
         }
+        
+        //api/Pizza/get/[qualunque stringa]
+        [HttpGet("{name}")]
+        public IActionResult GetByName(string? name)
+        {
+            IQueryable<Pizza> pizzas;
+
+            if(name != null){
+                
+                pizzas = _ctx.Pizzas.Where(pizza => pizza.Name.ToLower().Contains(name.ToLower()));
+            }
+            else
+            {
+                pizzas = _ctx.Pizzas;
+            }
+
+            return Ok(pizzas.ToList());
+        }
+
+       
+        //api/Pizza/get/[qualqune numero]
+        [HttpGet("{id}")]
+        public IActionResult GetById(int id)
+        {
+            Pizza pizza = _ctx.Pizzas.Where(pizza => pizza.PizzaId == id).FirstOrDefault();
+
+            return Ok(pizza);
+        }
+
+       
     }
 }

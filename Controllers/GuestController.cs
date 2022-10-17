@@ -12,7 +12,7 @@ namespace la_mia_pizzeria_crud_webapi.Controllers
             return View();
         }
 
-        public IActionResult PizzasList()
+        public IActionResult Details(int id)
         {
             return View();
         }
