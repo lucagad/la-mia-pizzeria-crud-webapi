@@ -25,7 +25,7 @@ namespace la_mia_pizzeria_crud_webapi.Controllers.API
         [HttpGet]
         public IActionResult Get()
         {
-            List<Pizza> pizzes = db.Pizzas.ToList();
+            List<Pizza> pizzes = db.Pizzas.Include("Category").ToList();
 
             return Ok(pizzes);
         }
