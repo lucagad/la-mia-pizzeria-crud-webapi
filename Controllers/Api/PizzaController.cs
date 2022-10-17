@@ -40,8 +40,8 @@ namespace la_mia_pizzeria_crud_webapi.Controllers.API
             return Ok(pizzes);
         }
         
-        //api/Pizza/get/[qualunque stringa]
-        [HttpGet("{name}")]
+        //api/Pizza/GetByName
+        [HttpGet()]
         public IActionResult GetByName(string? name)
         {
             IQueryable<Pizza> pizzas;
@@ -63,7 +63,7 @@ namespace la_mia_pizzeria_crud_webapi.Controllers.API
         [HttpGet("{id}")]
         public IActionResult GetById(int id)
         {
-            Pizza pizza = _ctx.Pizzas.Where(pizza => pizza.PizzaId == id).FirstOrDefault();
+            Pizza pizza = _ctx.Pizzas.Where(pizza => pizza.PizzaId == id).Include("Category").FirstOrDefault();
 
             return Ok(pizza);
         }

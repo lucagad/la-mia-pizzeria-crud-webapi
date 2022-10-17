@@ -1,0 +1,77 @@
+﻿@using Microsoft.EntityFrameworkCore.Metadata.Internal
+@{
+    ViewData["Title"] = "Homepage - ";
+    //Layout = null;
+}
+
+@*HEROBANNER*@
+<section class="container-fluid mx-0 px-0 text-white">
+    <div class="herobanner p-5 text-center">
+        <img class="d-block mx-auto mb-4" src="img/logo.png" alt="" width="72">
+        <h1 class="display-5 fw-bold">Informazioni Pizza Selezionata</h1>
+    </div>
+</section>
+
+<section id="loading" class="d-flex justify-content-center">
+     <div>
+         <p>Caricamento in corso ...</p>
+     </div>
+
+ </section>
+
+<section class="container" id="pizze_container">
+    <div id="pizza_info" class="d-flex justify-content-center p-4 text-dark text-center">
+        <!-- chiamata Axios per ottenere lista pizze-->
+    </div>
+    <div class="bottom_card">
+       <a class="btn btn_custom_buy" asp-area="" asp-controller="Guest" asp-action="Index">INDIETRO</a>
+    </div>
+</section>
+
+
+<script type="text/javascript">
+  
+    searchPizza();
+    
+    function searchPizza(){
+        let id = window.location.pathname.split('/')[3];
+        getPizzaById(id);
+    }
+    
+    function getPizzaById(id){
+        
+        axios.get('/api/Pizza/GetById/' + id).then(res => {
+            console.log('Chiamata OK', res);
+            if (res.data.length == 0) {
+                
+                document.querySelector("#pizza_info").innerHTML = '<h4 class="pt-4 text_alert"> Prodotto non trovato! <br/> Riprova più tardi!</h4>';
+                
+            } else {
+                
+               document.querySelector("#pizza_info").innerHTML ='';
+                pizza = res.data
+                    console.log('pizza', pizza);
+                    document.querySelector("#pizza_info").innerHTML += 
+                         `<div class="card d-flex flex-row" style="width: 70%">
+                             <img class="" width="50%" src="${pizza.imgUrl}" alt="${pizza.name}">
+                             <div class="card-body">
+                               <h4 class="card-title text-uppercase pizza_name fw-normal pt-2">${pizza.name}</h4>
+                               <span class="card-text">Categoria: ${pizza.category.name} </span>
+                               <p>${pizza.description}</p>
+                               <h5 class="pizza_name fw-normal">${pizza.price} €</h5>
+                             </div>
+                          </div>
+                         `;
+                let isLoading = false;
+                                
+                if(!isLoading){
+                  document.querySelector("#loading").classList.add("d-none");
+                }
+            }
+        }).catch(err => {
+            console.log("error",err);
+            document.querySelector("#pizza_info").innerHTML = '';
+            document.querySelector("#pizza_info").innerHTML= "<div class'alert alert-danger'> "+ err.message+ "</div>"; 
+        });    
+    }
+</script>
