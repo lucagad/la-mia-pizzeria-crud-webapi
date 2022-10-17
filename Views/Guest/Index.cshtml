@@ -45,7 +45,7 @@
 
 <script type="text/javascript">
     let isLoading = true;
-    axios.get("Guest/Api/Pizza")
+    axios.get("/api/Pizza/GetAll")
         .then(res =>{
             console.log(res.data);
             if(res.data.length > 0){
