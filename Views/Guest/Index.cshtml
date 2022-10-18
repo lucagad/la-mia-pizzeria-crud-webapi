@@ -56,7 +56,7 @@
 
         <div class="col-lg-8 col-lg-offset-2">
 
-            <form id="contact-form" method="post" action="" role="form">
+            <form onsubmit="InviaMessaggio(event)">
                 <div class="messages"></div>
                 <div class="controls">
 
@@ -64,16 +64,14 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="form_name">Nome *</label>
-                                <input id="form_name" type="text" name="name" class="form-control" placeholder="Inserisci il tuo Nome *" required="required" data-error="Firstname is required.">
-                                <div class="help-block with-errors"></div>
+                                <input id="form_name" type="text" name="name" class="form-control" placeholder="Inserisci il tuo Nome *" required="required">
                             </div>
                         </div>
 
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="form_lastname">Cognome *</label>
-                                <input id="form_lastname" type="text" name="surname" class="form-control" placeholder="Inserisci il tuo Cognome *" required="required" data-error="Lastname is required.">
-                                <div class="help-block with-errors"></div>
+                                <label for="form_surname">Cognome *</label>
+                                <input id="form_surname" type="text" name="surname" class="form-control" placeholder="Inserisci il tuo Cognome *" required="required">
                             </div>
                         </div>
                     </div>
@@ -82,19 +80,15 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="form_email">Email *</label>
-                                <input id="form_email" type="email" name="email" class="form-control" placeholder="Inserisci la tua email *" required="required" data-error="Valid email is required.">
-                                <div class="help-block with-errors"></div>
+                                <input id="form_email" type="email" name="email" class="form-control" placeholder="Inserisci la tua email *" required="required">
                             </div>
                         </div>
 
                         <div class="col-md-6">
-
                             <div class="form-group">
                                 <label for="form_phone">Telefono</label>
                                 <input id="form_phone" type="tel" name="phone" class="form-control" placeholder="Inserisci il tuo Telefono">
-                                <div class="help-block with-errors"></div>
                             </div>
-
                         </div>
 
                     </div>
@@ -103,8 +97,7 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label for="form_message">Messaggio *</label>
-                                <textarea id="form_message" name="message" class="form-control" placeholder="Inserisci il tuo Messaggio *" rows="4" required data-error="Please,leave us a message."></textarea>
-                                <div class="help-block with-errors"></div>
+                                <textarea id="form_message" name="message" class="form-control" placeholder="Inserisci il tuo Messaggio*" rows="4" required></textarea>
                             </div>
                         </div>
 
@@ -172,5 +165,36 @@
             document.querySelector("#pizze-list").innerHTML = '';
             document.querySelector("#pizze-list").innerHTML= "<div class'alert alert-danger'> "+ err.message+ "</div>"; 
         });    
+    }
+</script>
+
+<script type="text/javascript">
+  
+    function InviaMessaggio(e){
+               
+        e.preventDefault();
+        axios.post("/api/message/send",{
+            
+            email: document.querySelector('#form_email').value,
+            name: document.querySelector('#form_name').value,
+            surname: document.querySelector('#form_surname').value,
+            telephone: document.querySelector('#form_phone').value,
+            text: document.querySelector('#form_message').value,
+            
+        }).then(res=>{
+            document.querySelector('#form_email').value = '',
+            document.querySelector('#form_name').value = '',
+            document.querySelector('#form_surname').value = '',
+            document.querySelector('#form_phone').value = '',
+            document.querySelector('#form_message').value = '',
+
+            alert('Messaggio inviato correttamente');
+        }).catch(err=>{
+            
+            console.log(err);
+            alert('Opps, dati non validi, riprova!');
+            
+        })
+        
     }
 </script>
