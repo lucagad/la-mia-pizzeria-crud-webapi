@@ -43,8 +43,10 @@ app.MapControllerRoute(
 app.MapRazorPages();
 app.Run();
 
-//defaultValue();
 
+/*
+defaultValue();
+*/
 
 static void defaultValue()
 {
@@ -56,6 +58,11 @@ static void defaultValue()
         db.Add(new Pizza { PizzaId = 1, Name = "Pizza Margherita", Description = "Pizza con Pomodoro e Mozzarella", ImgUrl= "/img/pizza_margherita.jpg",Price = 6 });
         db.Add(new Pizza { PizzaId = 2, Name = "Pizza Wurstel", Description = "Pizza con Pomodoro, Mozzarella e Wurstel", ImgUrl= "/img/pizza_wurstel.jpg",Price = 8 });
         db.Add(new Pizza { PizzaId = 3, Name = "Pizza 4 Stagioni", Description = "Pizza con Pomodoro, Mozzarella, Carciofini, Funghi, Olive e Prosciutto Cotto", ImgUrl= "/img/pizza_quattro_stagioni.jpg",Price = 9 });
+        
+        db.Add(new Category { Id = 1, Name = "Pizze Classiche" });
+        db.Add(new Category { Id = 1, Name = "Pizze Bianche" });
+        db.Add(new Category { Id = 1, Name = "Pizze Vegetariane" });
+
         
         db.SaveChanges();
             
