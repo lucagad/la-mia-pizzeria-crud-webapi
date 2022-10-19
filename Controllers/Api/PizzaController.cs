@@ -4,19 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using la_mia_pizzeria_post.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
-
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-
-/*
-[HttpGet]
-public IActionResult Get()
-{
-    List<Pizza> pizzes = db.Pizzas.Include("Category").ToList();
-
-    return Ok(pizzes);
-}
-*/
 
 namespace la_mia_pizzeria_crud_webapi.Controllers.API
 {
@@ -36,7 +26,6 @@ namespace la_mia_pizzeria_crud_webapi.Controllers.API
         public IActionResult GetAll()
         {
             List<Pizza> pizzes = _ctx.Pizzas.Include("Category").ToList();
-
             return Ok(pizzes);
         }
         
@@ -57,17 +46,37 @@ namespace la_mia_pizzeria_crud_webapi.Controllers.API
 
             return Ok(pizzas.ToList());
         }
-
        
-        //api/Pizza/get/[qualqune numero]
+        //api/Pizza/GetById/id
         [HttpGet("{id}")]
         public IActionResult GetById(int id)
         {
             Pizza pizza = _ctx.Pizzas.Where(pizza => pizza.PizzaId == id).Include("Category").FirstOrDefault();
-
             return Ok(pizza);
         }
 
-       
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            Pizza pizza = _ctx.Pizzas.Where(pizza => pizza.PizzaId == id).FirstOrDefault();
+            
+            if (pizza == null)
+            {
+                return NotFound(new { Message = "Pizza non trovata", Id = id});
+            }
+
+            try
+            {
+                _ctx.Pizzas.Remove(pizza);
+                _ctx.SaveChanges();
+            }
+            catch (SqlException e)
+            {
+                
+            }
+            
+            return Ok(new { Message = "Pizza eliminata correttamente", Id = id });
+            
+        }
     }
 }
